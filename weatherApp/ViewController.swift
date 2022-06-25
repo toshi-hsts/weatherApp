@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import YumemiWeather
 
 class ViewController: UIViewController {
 
@@ -16,7 +17,10 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
     }
-
-
+    
+    @IBAction func tapReloadButton(_ sender: Any) {
+        let weather = YumemiWeather.fetchWeatherCondition()
+        weatherImageView.image = UIImage(named: weather)
+    }
 }
 
