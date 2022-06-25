@@ -24,16 +24,37 @@
                                     <constraint firstAttribute="width" secondItem="oMd-QW-Ehj" secondAttribute="height" id="dan-kX-TYY"/>
                                 </constraints>
                             </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="blue" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="O1z-gS-t4e">
+                                <rect key="frame" x="103.5" y="551.5" width="103.5" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" name="Blue"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="red" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XIu-jf-O5L">
+                                <rect key="frame" x="207" y="551.5" width="103.5" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" name="Red"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
+                            <constraint firstItem="XIu-jf-O5L" firstAttribute="top" secondItem="oMd-QW-Ehj" secondAttribute="bottom" id="7hU-Uu-BKP"/>
+                            <constraint firstItem="XIu-jf-O5L" firstAttribute="leading" secondItem="O1z-gS-t4e" secondAttribute="trailing" id="8wS-kB-0dh"/>
+                            <constraint firstItem="O1z-gS-t4e" firstAttribute="top" secondItem="oMd-QW-Ehj" secondAttribute="bottom" id="Dom-5K-dcl"/>
                             <constraint firstItem="oMd-QW-Ehj" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="Nlq-3y-XGK"/>
+                            <constraint firstItem="O1z-gS-t4e" firstAttribute="leading" secondItem="oMd-QW-Ehj" secondAttribute="leading" id="T8a-bB-Ppn"/>
+                            <constraint firstItem="O1z-gS-t4e" firstAttribute="width" secondItem="oMd-QW-Ehj" secondAttribute="width" multiplier="0.5" id="UgA-ji-8QQ"/>
                             <constraint firstItem="oMd-QW-Ehj" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="aE3-2U-3Wo"/>
                             <constraint firstItem="oMd-QW-Ehj" firstAttribute="width" secondItem="8bC-Xf-vdC" secondAttribute="width" multiplier="0.5" id="fq4-ao-0Lk"/>
+                            <constraint firstItem="XIu-jf-O5L" firstAttribute="width" secondItem="oMd-QW-Ehj" secondAttribute="width" multiplier="0.5" id="fyy-Fl-iVO"/>
+                            <constraint firstItem="XIu-jf-O5L" firstAttribute="trailing" secondItem="oMd-QW-Ehj" secondAttribute="trailing" id="tSi-ET-Bhi"/>
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="blueLabel" destination="O1z-gS-t4e" id="F1I-VG-gF3"/>
+                        <outlet property="redLabel" destination="XIu-jf-O5L" id="H9v-eK-bky"/>
                         <outlet property="weatherImageView" destination="oMd-QW-Ehj" id="9cx-0W-F2B"/>
                     </connections>
                 </viewController>
@@ -43,8 +64,14 @@
         </scene>
     </scenes>
     <resources>
+        <namedColor name="Blue">
+            <color red="0.20499999821186066" green="0.53700000047683716" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
         <namedColor name="Gray">
             <color red="0.47900000214576721" green="0.48800000548362732" blue="0.52100002765655518" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="Red">
+            <color red="1" green="0.210999995470047" blue="0.15700000524520874" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
