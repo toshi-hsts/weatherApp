@@ -36,17 +36,34 @@
                                 <color key="textColor" name="Red"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fMi-oP-63f">
+                                <rect key="frame" x="103.5" y="652.5" width="103.5" height="31"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="Close"/>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mqQ-9l-AId">
+                                <rect key="frame" x="207" y="652.5" width="103.5" height="31"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="Reload"/>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
+                            <constraint firstItem="fMi-oP-63f" firstAttribute="leading" secondItem="O1z-gS-t4e" secondAttribute="leading" id="2Op-37-yb9"/>
+                            <constraint firstItem="mqQ-9l-AId" firstAttribute="leading" secondItem="fMi-oP-63f" secondAttribute="trailing" id="5Dg-dx-htb"/>
                             <constraint firstItem="XIu-jf-O5L" firstAttribute="top" secondItem="oMd-QW-Ehj" secondAttribute="bottom" id="7hU-Uu-BKP"/>
                             <constraint firstItem="XIu-jf-O5L" firstAttribute="leading" secondItem="O1z-gS-t4e" secondAttribute="trailing" id="8wS-kB-0dh"/>
                             <constraint firstItem="O1z-gS-t4e" firstAttribute="top" secondItem="oMd-QW-Ehj" secondAttribute="bottom" id="Dom-5K-dcl"/>
+                            <constraint firstItem="mqQ-9l-AId" firstAttribute="width" secondItem="XIu-jf-O5L" secondAttribute="width" id="Fm7-kh-Bpq"/>
+                            <constraint firstItem="mqQ-9l-AId" firstAttribute="top" secondItem="XIu-jf-O5L" secondAttribute="bottom" constant="80" id="NOS-bu-oyz"/>
                             <constraint firstItem="oMd-QW-Ehj" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="Nlq-3y-XGK"/>
+                            <constraint firstItem="mqQ-9l-AId" firstAttribute="trailing" secondItem="XIu-jf-O5L" secondAttribute="trailing" id="QNB-YX-hpr"/>
                             <constraint firstItem="O1z-gS-t4e" firstAttribute="leading" secondItem="oMd-QW-Ehj" secondAttribute="leading" id="T8a-bB-Ppn"/>
                             <constraint firstItem="O1z-gS-t4e" firstAttribute="width" secondItem="oMd-QW-Ehj" secondAttribute="width" multiplier="0.5" id="UgA-ji-8QQ"/>
+                            <constraint firstItem="fMi-oP-63f" firstAttribute="width" secondItem="O1z-gS-t4e" secondAttribute="width" id="XBM-Me-PJw"/>
                             <constraint firstItem="oMd-QW-Ehj" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="aE3-2U-3Wo"/>
+                            <constraint firstItem="fMi-oP-63f" firstAttribute="top" secondItem="O1z-gS-t4e" secondAttribute="bottom" constant="80" id="dgK-Pv-aDM"/>
                             <constraint firstItem="oMd-QW-Ehj" firstAttribute="width" secondItem="8bC-Xf-vdC" secondAttribute="width" multiplier="0.5" id="fq4-ao-0Lk"/>
                             <constraint firstItem="XIu-jf-O5L" firstAttribute="width" secondItem="oMd-QW-Ehj" secondAttribute="width" multiplier="0.5" id="fyy-Fl-iVO"/>
                             <constraint firstItem="XIu-jf-O5L" firstAttribute="trailing" secondItem="oMd-QW-Ehj" secondAttribute="trailing" id="tSi-ET-Bhi"/>
