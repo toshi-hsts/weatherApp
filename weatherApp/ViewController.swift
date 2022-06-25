@@ -9,9 +9,21 @@ import UIKit
 
 class ViewController: UIViewController {
 
+    @IBOutlet weak var weatherImageView: UIImageView!
+    @IBOutlet weak var blueLabel: UILabel!
+    @IBOutlet weak var redLabel: UILabel!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
+
+//        blueLabel.widthAnchor.constraint(equalToConstant: weatherImageView.frame.width / 2 ).isActive = true
+//        blueLabel.textAlignment = .center
+//        
+//        
+//        
+//        
+//        redLabel.widthAnchor.constraint(equalToConstant: weatherImageView.frame.width / 2 ).isActive = true
+//        redLabel.textAlignment = .center
     }
 
 
