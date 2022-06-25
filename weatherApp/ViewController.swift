@@ -15,15 +15,6 @@ class ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-//        blueLabel.widthAnchor.constraint(equalToConstant: weatherImageView.frame.width / 2 ).isActive = true
-//        blueLabel.textAlignment = .center
-//        
-//        
-//        
-//        
-//        redLabel.widthAnchor.constraint(equalToConstant: weatherImageView.frame.width / 2 ).isActive = true
-//        redLabel.textAlignment = .center
     }
 
 
