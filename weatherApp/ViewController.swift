@@ -19,8 +19,23 @@ class ViewController: UIViewController {
     }
     
     @IBAction func tapReloadButton(_ sender: Any) {
-        let weather = YumemiWeather.fetchWeatherCondition()
-        weatherImageView.image = UIImage(named: weather)
+        let area = "tokyo"
+        do {
+            let weather = try YumemiWeather.fetchWeatherCondition(at: area)
+            weatherImageView.image = UIImage(named: weather)
+        } catch {
+            showAlert()
+        }
+    }
+    
+    private func showAlert(){
+        let alert =
+        UIAlertController(title:"エラー",
+                          message: "通信エラーが発生しました。",
+                          preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+        
+        present(alert, animated: true)
     }
 }
 
