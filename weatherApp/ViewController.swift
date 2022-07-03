@@ -20,12 +20,53 @@ class ViewController: UIViewController {
     
     @IBAction func tapReloadButton(_ sender: Any) {
         let area = "tokyo"
+        let date = Date()
+        let json = encode(area: area, date: date)
+        
+        guard json.isEmpty == false else { return }
+        
         do {
-            let weather = try YumemiWeather.fetchWeatherCondition(at: area)
-            weatherImageView.image = UIImage(named: weather)
+            let response = try YumemiWeather.fetchWeather(json)
+            
+            guard let result = decode(response) else { return }
+            
+            weatherImageView.image = UIImage(named: result.weather)
+            blueLabel.text = String(result.minTemperature)
+            redLabel.text = String(result.maxTemperature)
         } catch {
             showAlert()
         }
+    }
+    
+    private func decode(_ json: String) -> Response? {
+        var response: Response?
+        
+        do {
+            let jsonData = json.data(using: .utf8)!
+            response = try JSONDecoder().decode(Response.self, from: jsonData)
+        } catch {
+            print(error.localizedDescription)
+        }
+        
+        return response
+    }
+    
+    private func encode(area: String, date: Date) -> String {        
+        var json = ""
+        let encoder = JSONEncoder()
+        encoder.dateEncodingStrategy = .iso8601
+        encoder.outputFormatting = .prettyPrinted
+
+        let request = Request(area: area, date: date)
+        
+        do {
+            let encodedData = try encoder.encode(request)
+            json = String(data: encodedData, encoding: .utf8)!
+        } catch {
+            print(error.localizedDescription)
+        }
+        
+        return json
     }
     
     private func showAlert(){
@@ -38,4 +79,3 @@ class ViewController: UIViewController {
         present(alert, animated: true)
     }
 }
-
