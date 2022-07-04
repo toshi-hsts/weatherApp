@@ -38,6 +38,10 @@ class ViewController: UIViewController {
         }
     }
     
+    @IBAction func tapCloseButton(_ sender: Any) {
+        dismiss(animated: true)
+    }
+    
     private func decode(_ json: String) -> Response? {
         var response: Response?
         
