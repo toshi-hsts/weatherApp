@@ -16,6 +16,17 @@ class ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        NotificationCenter.default.addObserver(self,
+                                               selector: #selector(foreground(notification:)),
+                                               name: UIApplication.willEnterForegroundNotification,
+                                               object: nil
+        )
+        NotificationCenter.default.addObserver(self,
+                                               selector: #selector(background(notification:)),
+                                               name: UIApplication.didEnterBackgroundNotification,
+                                               object: nil
+        )
     }
     
     @IBAction func tapReloadButton(_ sender: Any) {
@@ -40,6 +51,14 @@ class ViewController: UIViewController {
     
     @IBAction func tapCloseButton(_ sender: Any) {
         dismiss(animated: true)
+    }
+    
+    @objc func foreground(notification: Notification) {
+        print("フォアグラウンド")
+        tapReloadButton(AnyObject.self)
+    }
+    @objc func background(notification: Notification) {
+        print("バックグラウンド")
     }
     
     private func decode(_ json: String) -> Response? {
