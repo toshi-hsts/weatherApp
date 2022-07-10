@@ -52,6 +52,10 @@
                                     <action selector="tapReloadButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="TWd-Q7-s5B"/>
                                 </connections>
                             </button>
+                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" hidesWhenStopped="YES" style="medium" translatesAutoresizingMaskIntoConstraints="NO" id="Nsd-1n-5Ij">
+                                <rect key="frame" x="197" y="582" width="20" height="20"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </activityIndicatorView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -77,6 +81,7 @@
                     </view>
                     <connections>
                         <outlet property="blueLabel" destination="O1z-gS-t4e" id="F1I-VG-gF3"/>
+                        <outlet property="indicator" destination="Nsd-1n-5Ij" id="xv3-La-dEF"/>
                         <outlet property="redLabel" destination="XIu-jf-O5L" id="H9v-eK-bky"/>
                         <outlet property="weatherImageView" destination="oMd-QW-Ehj" id="9cx-0W-F2B"/>
                     </connections>
