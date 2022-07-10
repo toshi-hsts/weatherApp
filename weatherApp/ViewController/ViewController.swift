@@ -30,6 +30,10 @@ class ViewController: UIViewController {
         )
     }
     
+    deinit {
+        print("deinit")
+    }
+    
     @IBAction func tapReloadButton(_ sender: Any) {
         let area = "tokyo"
         let date = Date()
