@@ -16,4 +16,12 @@ class InitialViewController: UIViewController {
     override func viewDidAppear(_ animated: Bool) {
         performSegue(withIdentifier: "toWeather", sender: nil)
     }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "toWeather" {
+            if let vc = segue.destination as? ViewController{
+                vc.delegate = APIClient()
+            }
+        }
+    }
 }

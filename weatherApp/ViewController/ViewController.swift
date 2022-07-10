@@ -6,13 +6,14 @@
 //
 
 import UIKit
-import YumemiWeather
 
 class ViewController: UIViewController {
     @IBOutlet weak var weatherImageView: UIImageView!
     @IBOutlet weak var blueLabel: UILabel!
     @IBOutlet weak var redLabel: UILabel!
     @IBOutlet weak var indicator: UIActivityIndicatorView!
+    
+    var delegate: APIClientDelegate?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -40,9 +41,8 @@ class ViewController: UIViewController {
         
         DispatchQueue.global(qos: .default).async {
             do {
-                let response = try YumemiWeather.syncFetchWeather(json)
-                
-                guard let result = self.decode(response) else { return }
+                guard let response = try self.delegate?.fetchWeather(with: json),
+                      let result = self.decode(response) else { return }
                 
                 DispatchQueue.main.async {
                     self.weatherImageView.image = UIImage(named: result.weather)

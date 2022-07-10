@@ -10,6 +10,8 @@
 		CA80C5B52871CFA9009AB964 /* Response.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA80C5B42871CFA9009AB964 /* Response.swift */; };
 		CA80C5B72871CFC4009AB964 /* Request.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA80C5B62871CFC4009AB964 /* Request.swift */; };
 		CA80C5B928727FDB009AB964 /* InitialViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA80C5B828727FDB009AB964 /* InitialViewController.swift */; };
+		CA81E380287B404000EC4A09 /* APIClientDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA81E37F287B404000EC4A09 /* APIClientDelegate.swift */; };
+		CA81E382287B406900EC4A09 /* APIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA81E381287B406900EC4A09 /* APIClient.swift */; };
 		CAB5C32928678EC200EE6F2F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAB5C32828678EC200EE6F2F /* AppDelegate.swift */; };
 		CAB5C32B28678EC200EE6F2F /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAB5C32A28678EC200EE6F2F /* SceneDelegate.swift */; };
 		CAB5C32D28678EC200EE6F2F /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAB5C32C28678EC200EE6F2F /* ViewController.swift */; };
@@ -23,6 +25,8 @@
 		CA80C5B42871CFA9009AB964 /* Response.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Response.swift; sourceTree = "<group>"; };
 		CA80C5B62871CFC4009AB964 /* Request.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Request.swift; sourceTree = "<group>"; };
 		CA80C5B828727FDB009AB964 /* InitialViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InitialViewController.swift; sourceTree = "<group>"; };
+		CA81E37F287B404000EC4A09 /* APIClientDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIClientDelegate.swift; sourceTree = "<group>"; };
+		CA81E381287B406900EC4A09 /* APIClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIClient.swift; sourceTree = "<group>"; };
 		CAB5C32528678EC200EE6F2F /* weatherApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = weatherApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CAB5C32828678EC200EE6F2F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		CAB5C32A28678EC200EE6F2F /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -54,6 +58,23 @@
 			path = Codable;
 			sourceTree = "<group>";
 		};
+		CA81E37E287B3CDA00EC4A09 /* Protocol */ = {
+			isa = PBXGroup;
+			children = (
+				CA81E37F287B404000EC4A09 /* APIClientDelegate.swift */,
+			);
+			path = Protocol;
+			sourceTree = "<group>";
+		};
+		CA81E383287B40E700EC4A09 /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				CAB5C32C28678EC200EE6F2F /* ViewController.swift */,
+				CA80C5B828727FDB009AB964 /* InitialViewController.swift */,
+			);
+			path = ViewController;
+			sourceTree = "<group>";
+		};
 		CAB5C31C28678EC200EE6F2F = {
 			isa = PBXGroup;
 			children = (
@@ -73,11 +94,12 @@
 		CAB5C32728678EC200EE6F2F /* weatherApp */ = {
 			isa = PBXGroup;
 			children = (
+				CA81E37E287B3CDA00EC4A09 /* Protocol */,
 				CA80C5B32871CF90009AB964 /* Codable */,
+				CA81E383287B40E700EC4A09 /* ViewController */,
 				CAB5C32828678EC200EE6F2F /* AppDelegate.swift */,
+				CA81E381287B406900EC4A09 /* APIClient.swift */,
 				CAB5C32A28678EC200EE6F2F /* SceneDelegate.swift */,
-				CA80C5B828727FDB009AB964 /* InitialViewController.swift */,
-				CAB5C32C28678EC200EE6F2F /* ViewController.swift */,
 				CAB5C32E28678EC200EE6F2F /* Main.storyboard */,
 				CAB5C33128678EC300EE6F2F /* Assets.xcassets */,
 				CAB5C33328678EC300EE6F2F /* LaunchScreen.storyboard */,
@@ -166,7 +188,9 @@
 				CA80C5B52871CFA9009AB964 /* Response.swift in Sources */,
 				CAB5C32D28678EC200EE6F2F /* ViewController.swift in Sources */,
 				CA80C5B72871CFC4009AB964 /* Request.swift in Sources */,
+				CA81E382287B406900EC4A09 /* APIClient.swift in Sources */,
 				CA80C5B928727FDB009AB964 /* InitialViewController.swift in Sources */,
+				CA81E380287B404000EC4A09 /* APIClientDelegate.swift in Sources */,
 				CAB5C32928678EC200EE6F2F /* AppDelegate.swift in Sources */,
 				CAB5C32B28678EC200EE6F2F /* SceneDelegate.swift in Sources */,
 			);
