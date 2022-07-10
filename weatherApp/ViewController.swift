@@ -9,7 +9,6 @@ import UIKit
 import YumemiWeather
 
 class ViewController: UIViewController {
-
     @IBOutlet weak var weatherImageView: UIImageView!
     @IBOutlet weak var blueLabel: UILabel!
     @IBOutlet weak var redLabel: UILabel!
@@ -37,16 +36,27 @@ class ViewController: UIViewController {
         
         guard json.isEmpty == false else { return }
         
-        do {
-            let response = try YumemiWeather.fetchWeather(json)
-            
-            guard let result = decode(response) else { return }
-            
-            weatherImageView.image = UIImage(named: result.weather)
-            blueLabel.text = String(result.minTemperature)
-            redLabel.text = String(result.maxTemperature)
-        } catch {
-            showAlert()
+        indicator.startAnimating()
+        
+        DispatchQueue.global(qos: .default).async {
+            do {
+                let response = try YumemiWeather.syncFetchWeather(json)
+                
+                guard let result = self.decode(response) else { return }
+                
+                DispatchQueue.main.async {
+                    self.weatherImageView.image = UIImage(named: result.weather)
+                    self.blueLabel.text = String(result.minTemperature)
+                    self.redLabel.text = String(result.maxTemperature)
+                    
+                    self.indicator.stopAnimating()
+                }
+            } catch {
+                DispatchQueue.main.async {
+                    self.indicator.stopAnimating()
+                    self.showAlert()
+                }
+            }
         }
     }
     
@@ -75,7 +85,7 @@ class ViewController: UIViewController {
         return response
     }
     
-    private func encode(area: String, date: Date) -> String {        
+    private func encode(area: String, date: Date) -> String {
         var json = ""
         let encoder = JSONEncoder()
         encoder.dateEncodingStrategy = .iso8601
