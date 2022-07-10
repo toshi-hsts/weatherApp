@@ -66,6 +66,15 @@
 			path = Protocol;
 			sourceTree = "<group>";
 		};
+		CA81E383287B40E700EC4A09 /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				CAB5C32C28678EC200EE6F2F /* ViewController.swift */,
+				CA80C5B828727FDB009AB964 /* InitialViewController.swift */,
+			);
+			path = ViewController;
+			sourceTree = "<group>";
+		};
 		CAB5C31C28678EC200EE6F2F = {
 			isa = PBXGroup;
 			children = (
@@ -87,11 +96,10 @@
 			children = (
 				CA81E37E287B3CDA00EC4A09 /* Protocol */,
 				CA80C5B32871CF90009AB964 /* Codable */,
+				CA81E383287B40E700EC4A09 /* ViewController */,
 				CAB5C32828678EC200EE6F2F /* AppDelegate.swift */,
 				CA81E381287B406900EC4A09 /* APIClient.swift */,
 				CAB5C32A28678EC200EE6F2F /* SceneDelegate.swift */,
-				CA80C5B828727FDB009AB964 /* InitialViewController.swift */,
-				CAB5C32C28678EC200EE6F2F /* ViewController.swift */,
 				CAB5C32E28678EC200EE6F2F /* Main.storyboard */,
 				CAB5C33128678EC300EE6F2F /* Assets.xcassets */,
 				CAB5C33328678EC300EE6F2F /* LaunchScreen.storyboard */,
