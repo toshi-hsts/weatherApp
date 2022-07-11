@@ -14,8 +14,8 @@ class APIClient: APIClientDelegate {
     }
     
     func fetchWeatherUsingClosure(with json: String,
-                                  closure: (_ response: String) -> Void) throws {
+                                  completion: (_ response: String) -> Void) throws {
         let response = try YumemiWeather.syncFetchWeather(json)
-        closure(response)
+        completion(response)
     }
 }

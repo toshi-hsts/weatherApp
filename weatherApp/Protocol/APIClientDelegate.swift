@@ -10,5 +10,5 @@ import Foundation
 protocol APIClientDelegate {
     func fetchWeather(with json: String) throws -> String
     func fetchWeatherUsingClosure(with json: String,
-                                  closure:(_ response: String) -> Void) throws
+                                  completion:(_ response: String) -> Void) throws
 }

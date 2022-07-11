@@ -52,7 +52,7 @@ class ViewController: UIViewController {
                 // クロージャパターン
                 var result: Response?
                 
-                try self.delegate?.fetchWeatherUsingClosure(with: json, closure: { [weak self] response in
+                try self.delegate?.fetchWeatherUsingClosure(with: json, completion: { [weak self] response in
                     result = self?.decode(response)
                 })
                 
