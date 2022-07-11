@@ -45,8 +45,19 @@ class ViewController: UIViewController {
         
         DispatchQueue.global(qos: .default).async {
             do {
-                guard let response = try self.delegate?.fetchWeather(with: json),
-                      let result = self.decode(response) else { return }
+                // デリゲートパターン
+                // guard let response = try self.delegate?.fetchWeather(with: json),
+                //       let result = self.decode(response) else { return }
+
+                // クロージャパターン
+                var result: Response?
+                
+                try self.delegate?.fetchWeatherUsingClosure(with: json, closure: { [weak self] response in
+                    result = self?.decode(response)
+                })
+                
+                guard let result = result else { return }
+                // ---
                 
                 DispatchQueue.main.async {
                     self.weatherImageView.image = UIImage(named: result.weather)
