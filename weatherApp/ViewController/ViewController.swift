@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import YumemiWeather
 
 class ViewController: UIViewController {
     @IBOutlet weak var weatherImageView: UIImageView!
@@ -43,36 +44,58 @@ class ViewController: UIViewController {
         
         indicator.startAnimating()
         
-        DispatchQueue.global(qos: .default).async {
-            do {
-                // デリゲートパターン
-                // guard let response = try self.delegate?.fetchWeather(with: json),
-                //       let result = self.decode(response) else { return }
+//        DispatchQueue.global(qos: .default).async {
+//            do {
+//                // デリゲートパターン
+//                // guard let response = try self.delegate?.fetchWeather(with: json),
+//                //       let result = self.decode(response) else { return }
+//
+//                // クロージャパターン1
+////                var result: Response?
+////
+////                try self.delegate?.fetchWeatherUsingClosure(with: json, completion: { [weak self] response in
+////                    result = self?.decode(response)
+////                })
+////
+////                guard let result = result else { return }
+//                // ---
+//
+//                DispatchQueue.main.async {
+//                    self.weatherImageView.image = UIImage(named: result.weather)
+//                    self.blueLabel.text = String(result.minTemperature)
+//                    self.redLabel.text = String(result.maxTemperature)
+//
+//                    self.indicator.stopAnimating()
+//                }
+//            } catch {
+//                DispatchQueue.main.async {
+//                    self.indicator.stopAnimating()
+//                    self.showAlert()
+//                }
+//            }
+//        }
 
-                // クロージャパターン
-                var result: Response?
-                
-                try self.delegate?.fetchWeatherUsingClosure(with: json, completion: { [weak self] response in
-                    result = self?.decode(response)
-                })
-                
-                guard let result = result else { return }
-                // ---
-                
+        // クロージャパターン2
+        YumemiWeather.callbackFetchWeather(json, completion: { [weak self] result in
+            switch result {
+            case .success(let callbackResponse):
+                guard let result = self?.decode(callbackResponse) else { return }
                 DispatchQueue.main.async {
-                    self.weatherImageView.image = UIImage(named: result.weather)
-                    self.blueLabel.text = String(result.minTemperature)
-                    self.redLabel.text = String(result.maxTemperature)
+                    self?.weatherImageView.image = UIImage(named: result.weather)
+                    self?.blueLabel.text = String(result.minTemperature)
+                    self?.redLabel.text = String(result.maxTemperature)
                     
-                    self.indicator.stopAnimating()
+                    self?.indicator.stopAnimating()
                 }
-            } catch {
+                
+            case .failure(let error):
+                print(error.localizedDescription)
                 DispatchQueue.main.async {
-                    self.indicator.stopAnimating()
-                    self.showAlert()
+                    self?.indicator.stopAnimating()
+                    self?.showAlert()
                 }
             }
-        }
+        })
     }
     
     @IBAction func tapCloseButton(_ sender: Any) {
