@@ -14,7 +14,7 @@ class ViewController: UIViewController {
     @IBOutlet weak var redLabel: UILabel!
     @IBOutlet weak var indicator: UIActivityIndicatorView!
     
-    var delegate: APIClientDelegate?
+    var delegate: APIClientDelegate!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -44,58 +44,22 @@ class ViewController: UIViewController {
         
         indicator.startAnimating()
         
-//        DispatchQueue.global(qos: .default).async {
-//            do {
-//                // デリゲートパターン
-//                // guard let response = try self.delegate?.fetchWeather(with: json),
-//                //       let result = self.decode(response) else { return }
-//
-//                // クロージャパターン1
-////                var result: Response?
-////
-////                try self.delegate?.fetchWeatherUsingClosure(with: json, completion: { [weak self] response in
-////                    result = self?.decode(response)
-////                })
-////
-////                guard let result = result else { return }
-//                // ---
-//
-//                DispatchQueue.main.async {
-//                    self.weatherImageView.image = UIImage(named: result.weather)
-//                    self.blueLabel.text = String(result.minTemperature)
-//                    self.redLabel.text = String(result.maxTemperature)
-//
-//                    self.indicator.stopAnimating()
-//                }
-//            } catch {
-//                DispatchQueue.main.async {
-//                    self.indicator.stopAnimating()
-//                    self.showAlert()
-//                }
-//            }
-//        }
-
-        // クロージャパターン2
-        YumemiWeather.callbackFetchWeather(json, completion: { [weak self] result in
-            switch result {
-            case .success(let callbackResponse):
-                guard let result = self?.decode(callbackResponse) else { return }
-                DispatchQueue.main.async {
-                    self?.weatherImageView.image = UIImage(named: result.weather)
-                    self?.blueLabel.text = String(result.minTemperature)
-                    self?.redLabel.text = String(result.maxTemperature)
-                    
-                    self?.indicator.stopAnimating()
-                }
+        Task {
+            do {
+                let response = try await delegate.fetchWeatherUsingAsync(with: json)
+                let result = try decode(response)
                 
-            case .failure(let error):
+                weatherImageView.image = UIImage(named: result.weather)
+                blueLabel.text = String(result.minTemperature)
+                redLabel.text = String(result.maxTemperature)
+                
+                indicator.stopAnimating()
+            } catch {
                 print(error.localizedDescription)
-                DispatchQueue.main.async {
-                    self?.indicator.stopAnimating()
-                    self?.showAlert()
-                }
+                indicator.stopAnimating()
+                showAlert()
             }
-        })
+        }
     }
     
     @IBAction func tapCloseButton(_ sender: Any) {
@@ -110,15 +74,9 @@ class ViewController: UIViewController {
         print("バックグラウンド")
     }
     
-    private func decode(_ json: String) -> Response? {
-        var response: Response?
-        
-        do {
-            let jsonData = json.data(using: .utf8)!
-            response = try JSONDecoder().decode(Response.self, from: jsonData)
-        } catch {
-            print(error.localizedDescription)
-        }
+    private func decode(_ json: String) throws -> Response {
+        let jsonData = json.data(using: .utf8)!
+        let response = try JSONDecoder().decode(Response.self, from: jsonData)
         
         return response
     }
