@@ -46,7 +46,6 @@ class ViewController: UIViewController {
         
         Task {
             do {
-                // デリゲートパターン
                 let response = try await delegate.fetchWeatherUsingAsync(with: json)
                 let result = try decode(response)
                 
