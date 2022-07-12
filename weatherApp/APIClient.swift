@@ -18,4 +18,8 @@ class APIClient: APIClientDelegate {
         let response = try YumemiWeather.syncFetchWeather(json)
         completion(response)
     }
+    
+    func fetchWeatherUsingAsync(with json: String) async throws -> String {
+        try await YumemiWeather.asyncFetchWeather(json)
+    }
 }
